@@ -3,7 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Camera/CameraComponent.h"
 #include "GameFramework/Character.h"
+#include "GameFramework/SpringArmComponent.h"
 #include "MyCharacter.generated.h"
 
 UCLASS()
@@ -16,9 +18,16 @@ public:
 	AMyCharacter();
 
 protected:
+	UPROPERTY(VisibleAnywhere)
+	UCameraComponent* CameraComp;
+
+	UPROPERTY(VisibleAnywhere)
+	USpringArmComponent* SpringArmComp;
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	void MoveForward(float value);
+	void MoveRight(float value);
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
